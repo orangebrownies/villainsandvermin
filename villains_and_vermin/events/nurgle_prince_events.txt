@@ -1,0 +1,66 @@
+namespace=nurgle_prince_events
+character_event = {
+	id = nurgle_prince_events.1
+	desc = EVTDESCNURGLELOVESYOU
+	picture = "GFX_evt_nurgle"
+	only_rulers = yes
+	prisoner = no
+    min_age = 16
+	
+	is_triggered_only = yes
+	
+	
+	has_dlc = "Reapers"
+	
+	option = {
+		name = EVTDESCNURGLELOVESYOUA
+
+	random_realm_province = {
+		location = { add_province_modifier = { name = nurgle_province_disease duration = 1500 } }
+		random_list = {
+				16 = { location = { spawn_disease = tuberculosis } }
+				16 = { location = { spawn_disease = typhoid_fever } }
+				16 = { location = { spawn_disease = typhus } }
+				16 = { location = { spawn_disease = measles } }
+				16 = { location = { spawn_disease = small_pox } }
+				16 = { location = { spawn_disease = syphilis } }
+		}
+		location = {
+			random_neighbor_province = {
+			}
+		}
+	}
+	immediate = {
+      random_realm_province = {
+         limit = {
+            any_neighbor_province = {
+               owner = {
+                  NOT = {
+                     same_realm = ROOT
+                  }
+               }
+            }
+         }
+         random_neighbor_province = {
+            limit = {
+               owner = {
+                  NOT = {
+                     same_realm = ROOT
+                  }
+               }
+            }
+			location = { add_province_modifier = { name = nurgle_province_disease duration = 1500 } }
+			random_list = {
+				16 = { location = { spawn_disease = tuberculosis } }
+				16 = { location = { spawn_disease = typhoid_fever } }
+				16 = { location = { spawn_disease = typhus } }
+				16 = { location = { spawn_disease = measles } }
+				16 = { location = { spawn_disease = small_pox } }
+				16 = { location = { spawn_disease = syphilis } }
+			}
+         }
+      }
+   }
+	
+	character_event = { id = nurgle_prince_events.1 days = 450 random = 150 }
+}

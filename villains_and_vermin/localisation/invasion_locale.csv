@@ -1,0 +1,84 @@
+####modifiers
+beastman_target;Beastman Incursion Target;;;;;;;;;;;;x
+beastman_target_desc;There are rumours from travellers that a horde of beastmen are headed this way.;;;;;;;;;;;;x
+chaos_target;Chaos Incursion Target;;;;;;;;;;;;x
+chaos_target_desc;There are rumours from travellers that a horde of chaos tribesmen are headed this way.;;;;;;;;;;;;x
+time_of_troubles_modifier;Time of Troubles;;;;;;;;;;;;;x
+time_of_troubles_modifier_desc;This ruler is experiencing a period of instability and discord.;;;;;;;;;;;;;x
+rebel_vassal_leader_modifier;Rebel Vassal Leader;;;;;;;;;;;;;x
+rebel_vassal_leader_modifier_desc;This vassal is well-liked and ambitious.;;;;;;;;;;;;;x
+####traits
+chaos_invader;Chaos Invader;;;;;;;;;;;;;x
+chaos_invader_desc;This character has opened a portal to the realms of chaos, and will continue to summon daemons until dealt with.;;;;;;;;;;;;;x
+undead_invader;Necromantic Invader;;;;;;;;;;;;;x
+undead_invader_desc;This character has mastered the arts of necromancy, and will continue to summon undead hordes until dealt with.;;;;;;;;;;;;;x
+undead_champion;Undead Champion;;;;;;;;;;;;;x
+undead_champion_desc;A sentient undead champion.;;;;;;;;;;;;;x
+dark_necromancer;Necromancer;;;;;;;;;;;;;x
+dark_necromancer_desc;This character is an accomplished necromancer.;;;;;;;;;;;;;x
+excellent_advisors;Excellent Advisors;;;;;;;;;;;;;x
+excellent_advisors_desc;This character has excellent advisors.;;;;;;;;;;;;;x
+#####invasion decisions
+invasions_enable;Enable Villains & Vermin;;;;;;;;;;;;;x
+invasions_enable_desc;Enable Villains & Vermin decisions.;;;;;;;;;;;;;x
+invasions_disable;Disable Villains & Vermin;;;;;;;;;;;;;x
+invasions_disable_desc;Disable Villains & Vermin decisions.;;;;;;;;;;;;;x
+prince_khorne_uprising_dec;Khorne Prince Invasion;;;;;;;;;;;;;x
+prince_khorne_uprising_dec_desc;A Prince of Khorne succeeds in creating a portal to the realms of chaos and begins his conquests.;;;;;;;;;;;;;x
+prince_nurgle_uprising_dec;Nurgle Prince Invasion;;;;;;;;;;;;;x
+prince_nurgle_uprising_dec_desc;A Prince of Nurgle succeeds in creating a portal to the realms of chaos and begins his conquests.;;;;;;;;;;;;;x
+prince_tzeentch_uprising_dec;Tzeentch Prince Invasion;;;;;;;;;;;;;x
+prince_tzeentch_uprising_dec_desc;A Prince of Tzeentch succeeds in creating a portal to the realms of chaos and begins his conquests.;;;;;;;;;;;;;x
+prince_slaanesh_uprising_dec;Slaanesh Prince Invasion;;;;;;;;;;;;;x
+prince_slaanesh_uprising_dec_desc;A Prince of Slaanesh succeeds in creating a portal to the realms of chaos and begins his conquests.;;;;;;;;;;;;;x
+beastman_uprising_dec;Beastman Horde Invasion;;;;;;;;;;;;;x
+beastman_uprising_dec_desc;A Horde of Beastman begin a rampage of destruction.;;;;;;;;;;;;;x
+time_of_troubles_dec;Time of Troubles;;;;;;;;;;;;;x
+time_of_troubles_dec_desc;This ruler will experience a 20-year bout of instability and discord.  Recommended to use with Rebel Vassal Leader on a powerful vassal.;;;;;;;;;;;;;x
+rebel_vassal_leader_dec;Create Rebel Vassal Leader;;;;;;;;;;;;;x
+rebel_vassal_leader_dec_desc;This will make a vassal ambitious and well-liked.  Recommended to use with Time of Troubles on top liege.;;;;;;;;;;;;;x
+excellent_advisors_dec;Give Excellent Advisors;;;;;;;;;;;;;x
+excellent_advisors_dec_desc;This ruler will receive excellent advisors, vastly enhancing his rule.;;;;;;;;;;;;;x
+reinforcements_dec;Reinforce Ruler;;;;;;;;;;;;;x
+reinforcements_dec_desc;This sends somewhat scaling generic culture reinforcements (min 2k).;;;;;;;;;;;;;x
+######chaos prince uprising events
+EVTDESCKHORNEPRINCEUPRISING;You have opened a portal and gained the favor of Khorne.;;;;;;;;;;;;;x
+EVTDESCNURGLEPRINCEUPRISING;You have opened a portal and gained the favor of Nurgle.;;;;;;;;;;;;;x
+EVTDESCTZEENTCHPRINCEUPRISING;You have opened a portal and gained the favor of Tzeentch.;;;;;;;;;;;;;x
+EVTDESCSLAANESHPRINCEUPRISING;You have opened a portal and gained the favor of Slaanesh.;;;;;;;;;;;;;x
+EVTDESCKHORNEPRINCEUPRISINGA;BLOOD FOR THE BLOOD GOD;;;;;;;;;;;;;x
+EVTDESCNURGLEPRINCEUPRISINGA;I JUST WANNA SHARE MY PRECIOUS WITH YOU GUYS;;;;;;;;;;;;;x
+EVTDESCTZEENTCHPRINCEUPRISINGA;ALL ACCORDING TO HIS PLAN;;;;;;;;;;;;;x
+EVTDESCSLAANESHPRINCEUPRISINGA;SOME OF THEM WANNA ABUSE YOU;;;;;;;;;;;;;x
+EVTDESCPRINCEUPRISINGREINF;Daemons spill through your portal, ready to destroy your enemies.;;;;;;;;;;;;;x
+EVTDESCPRINCEUPRISINGREINFA;Ok;;;;;;;;;;;;;x
+EVTDESCNURGLELOVESYOU;Papa Nurgle has shared his creations with the people of your realm.  He's so awesome!;;;;;;;;;;;;;x
+EVTDESCNURGLELOVESYOUA;Thanks Papa!;;;;;;;;;;;;;x
+EVTDESCKHORNEWANTSYOU;Beastmen that have flocked in groups to your realm have gathered and attacked a neighbor.;;;;;;;;;;;;;x
+EVTDESCKHORNEWANTSYOUA;SKULLS FOR THE SKULL THRONE;;;;;;;;;;;;;x
+EVTDESCTZEENTCHKNOWSYOU;Tzeentch seeps into the cracks of reality, growing his influence.;;;;;;;;;;;;;x
+EVTDESCTZEENTCHKNOWSYOUA;You can make cakes out of warp dust.;;;;;;;;;;;;;x
+#####beastman horde events
+EVTDESCBEASTRAMPAGE;Travellers tell rumours of large packs of beastmen travelling in our general direction.;;;;;;;;;;;;;x
+EVTDESCBEASTRAMPAGEA;What!?!;;;;;;;;;;;;;x
+EVTDESCBEASTMANREINF;Beastman reinforcements have arrived.;;;;;;;;;;;;;x
+EVTDESCBEASTMANREINFA;Ok;;;;;;;;;;;;;x
+####necromancer horde events
+dark_necromancer_lord_dec;Create Master Necromancer;;;;;;;;;;;;;x
+dark_necromancer_lord_dec_desc;A secret master necromancer reveals himself and begins his conquests.;;;;;;;;;;;;;x
+create_necromancer_dec;Create Necromancer;;;;;;;;;;;;;x
+create_necromancer_dec_desc;Turns the selected character into an average necromancer.;;;;;;;;;;;;;x
+create_undead_champion_dec;Create Undead Champion;;;;;;;;;;;;;x
+create_undead_champion_dec_desc;Turns the selected character into an undead champion.;;;;;;;;;;;;;x
+necromantic_horde_dec;Raise Necromantic Horde;;;;;;;;;;;;;x
+necromantic_horde_dec_desc;A necromancer discovers how to raise large amounts of undead.  (To be used on an existing necromancer to simulate Vlad-type summoning.);;;;;;;;;;;;;x
+EVTDESCDEADRISENOW;The dead rise to your call.;;;;;;;;;;;;;x
+EVTDESCDEADRISENOWA;Rise, rise!;;;;;;;;;;;;;x
+EVTDESCCREATENECRO1;You have the knowledge and tools needed to summon masses of the dead to serve your will.;;;;;;;;;;;;;x
+EVTDESCCREATENECRO1A;Excellent;;;;;;;;;;;;;x
+EVTDESCCREATEMASTERNEC1;You are a master necromancer, and the living and the dead will bow to your will.;;;;;;;;;;;;;x
+EVTDESCCREATEMASTERNEC1A;Death is my old friend!;;;;;;;;;;;;;x
+EVTDESCCREATEUNDEADCHAMP1;You have been transformed by a ritual into a sentient undead.;;;;;;;;;;;;;x
+EVTDESCCREATEUNDEADCHAMP1A;NOOOO!;;;;;;;;;;;;;x
+EVTDESCCREATEUNDEADHORDE1;You have the knowledge and tools needed to summon masses of the dead to serve your will.;;;;;;;;;;;;;x
+EVTDESCCREATEUNDEADHORDE1A;Rise, rise!!;;;;;;;;;;;;;x

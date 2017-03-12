@@ -1,0 +1,127 @@
+namespace=skaven_horde_events
+character_event = {
+	id = skaven_horde_events.1 # WAAAGH! Yourself
+	only_playable = yes
+
+	capable_only = yes
+	only_rulers = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { trait = vampire_necrarch_visible }
+		NOT = { culture_group = skaven_group }
+		NOT = {
+			OR = {
+				religion_group = greenskin_gods_group
+				culture_group = orc_group
+				culture_group = goblin_group
+			}
+		}
+	}
+	
+    immediate = {
+	
+	}
+	
+	option = {
+		name = OK
+		any_realm_province = {
+            random_neighbor_province = {
+				limit = {
+					owner = {
+						NOT = {
+							same_realm = ROOT
+						}
+						culture_group = skaven_group
+					}
+				}
+				owner = {
+					top_liege = {
+						save_event_target_as = skaven_invader_initiator
+					}
+				}
+				province_event = { id = skaven_horde_events.2 }
+            }
+        }
+		
+		event_target:skaven_invader_initiator = {
+			set_character_flag = skaven_incursion_flag
+		}
+		
+		random_realm_province = {
+			limit = {
+				any_neighbor_province = {
+					owner = {
+						NOT = {
+							same_realm = ROOT
+						}
+						culture_group = skaven_group
+					}
+				}
+			}
+			duchy = {
+				event_target:skaven_invader_initiator = {
+					war = {
+						casus_belli = skaven_incursioncb
+						target = ROOT # The top liege of the owner of the province
+						thirdparty_title = PREV # The de jure duchy
+						tier = DUKE
+					}
+				}
+			}
+		}
+	}
+}
+province_event = {
+	id = skaven_horde_events.2
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+				spawn_unit = {
+					province = ROOT
+					owner = PREVPREV
+					match_character = PREVPREV
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = ROOT
+					owner = PREVPREV
+					match_character = PREVPREV
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = ROOT
+					owner = PREVPREV
+					match_character = PREVPREV
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = ROOT
+					owner = PREVPREV
+					match_character = PREVPREV
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+			}
+		}
+	}
+}
