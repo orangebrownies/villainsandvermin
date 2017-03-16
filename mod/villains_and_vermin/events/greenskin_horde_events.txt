@@ -1,0 +1,879 @@
+namespace=greenskin_horde_events
+character_event = {
+	id = greenskin_horde_events.1 # WAAAGH! Yourself
+	only_playable = yes
+    hide_window = yes
+
+	capable_only = yes
+	only_men = yes
+	only_rulers = yes
+	is_triggered_only = yes
+    religion_group = greenskin_gods_group
+	
+	trigger = {
+		OR = {
+			trait = creature_orc
+			trait = creature_goblin
+		}
+		higher_tier_than = COUNT
+		ai = yes
+		age = 16
+		independent = yes 
+		NOT = { has_any_opinion_modifier = preparing_waaagh_vandv_opinion } 
+		NOT = { has_character_modifier = attempted_waaagh } 
+	}
+	
+    immediate = {
+		random_independent_ruler = {
+			limit = {
+				ai = no
+				is_playable = yes
+				is_landed = yes
+				demesne_size = 1
+				
+				NOT = { trait = creature_orc }
+				NOT = { trait = creature_goblin }
+				NOT = { religion_group = greenskin_gods_group }
+			}
+			save_event_target_as = waaagh_target
+		}
+	}
+	
+	option = {
+		name = OK
+		ROOT = { 
+				add_character_modifier = { 
+					modifier = preparing_waaagh_invasion
+					duration = 385 
+				}		#gives timer
+				
+				set_character_flag = preparing_waaagh_invasion_flag	 #Prevents AI from starting the war immediately
+				opinion = { 
+					who = event_target:waaagh_target
+					modifier = preparing_waaagh_vandv_opinion
+					months = 24 
+				}
+				add_rival = event_target:waaagh_target #To keep track
+				character_event = { id = greenskin_horde_events.3 days = 60 } #war declaration
+				character_event = { id = greenskin_horde_events.8 days = 415 } #cleanup in case of misfire
+				random_list = { #troop creation list
+					34 = {
+						character_event = { id = greenskin_horde_events.5 days = 59 } 
+					} 
+					34 = {
+						character_event = { id = greenskin_horde_events.6 days = 59 }
+					}
+					33 = {
+						character_event = { id = greenskin_horde_events.7 days = 59 }
+					}
+				} 				
+		}
+		
+		event_target:waaagh_target = {
+			character_event = { id = DR_greenskins.175 days = 12 random = 30 }		# Warn target
+			
+			opinion = { 
+				who = ROOT
+				modifier = preparing_waaagh_against_me_vandv_opinion
+				months = 24
+			}
+		}
+	}
+}
+character_event = {
+	id = greenskin_horde_events.2 # WAAAGH! Target
+	only_playable = yes
+    hide_window = yes
+
+	capable_only = yes
+	only_men = yes
+	only_rulers = yes
+	is_triggered_only = yes
+    religion_group = greenskin_gods_group
+	
+	trigger = {
+		OR = {
+			trait = creature_orc
+			trait = creature_goblin
+		}
+		higher_tier_than = COUNT
+		ai = yes
+		age = 16
+		independent = yes 
+		NOT = { has_any_opinion_modifier = preparing_waaagh_vandv_opinion } 
+		NOT = { has_character_modifier = attempted_waaagh } 
+	}
+	
+    immediate = {
+		random_independent_ruler = {
+			limit = {
+				is_playable = yes
+				is_landed = yes
+				demesne_size = 1
+				has_character_flag = waaagh_vandv_target
+				
+				NOT = { trait = creature_orc }
+				NOT = { trait = creature_goblin }
+				NOT = { religion_group = greenskin_gods_group }
+			}
+			save_event_target_as = waaagh_target
+		}
+	}
+	
+	option = {
+		name = OK
+		ROOT = { 
+				add_character_modifier = { 
+					modifier = preparing_waaagh_invasion
+					duration = 385 
+				}		#gives timer
+				
+				set_character_flag = preparing_waaagh_invasion_flag	 #Prevents AI from starting the war immediately
+				opinion = { 
+					who = event_target:waaagh_target
+					modifier = preparing_waaagh_vandv_opinion
+					months = 24
+				}
+				add_rival = event_target:waaagh_target #To keep track
+				character_event = { id = greenskin_horde_events.3 days = 60 } # war declaration 
+				character_event = { id = greenskin_horde_events.8 days = 415 } # cleanup in case of misfire
+				random_list = { # troop spawn list
+					34 = {
+						character_event = { id = greenskin_horde_events.5 days = 59 }
+					} 
+					34 = {
+						character_event = { id = greenskin_horde_events.6 days = 59 }
+					}
+					33 = {
+						character_event = { id = greenskin_horde_events.7 days = 59 }
+					}
+				} 				
+		}
+		event_target:waaagh_target = {
+			character_event = { id = DR_greenskins.175 days = 12 random = 30 }		# Warn target
+
+			opinion = { 
+				who = ROOT
+				modifier = preparing_waaagh_against_me_vandv_opinion
+				months = 24
+			}
+			clr_character_flag = waaagh_vandv_target
+		}
+	}
+}
+character_event = {
+	id = greenskin_horde_events.3 #test event targeting empire
+	hide_window = yes
+	only_playable = yes
+	is_triggered_only = yes
+	
+	
+	immediate = {
+		random_playable_ruler = {
+			limit = { 
+				has_opinion_modifier = { who = ROOT modifier = preparing_waaagh_against_me_vandv_opinion } 
+				NOT = { higher_tier_than = KING }
+			}	
+			primary_title = {
+				holder_scope = {
+					ROOT = {
+						war = {
+							casus_belli = waaagh_invasion_vandv
+							target = PREV # The top liege of the owner of the province
+							thirdparty_title = PREVPREV # The de jure kingdom
+							tier = KING
+						}
+					}
+				}
+			}
+		}
+		random_playable_ruler = {
+			limit = { 
+				has_opinion_modifier = { who = ROOT modifier = preparing_waaagh_against_me_vandv_opinion } 
+				higher_tier_than = KING
+			}
+			random_realm_province = {
+				kingdom = {
+					holder_scope = {
+						top_liege = {
+							ROOT = {
+								war = {
+									casus_belli = waaagh_invasion_vandv
+									target = PREV # The top liege of the owner of the province
+									thirdparty_title = PREVPREVPREV # The de jure kingdom
+									tier = KING
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+			
+	}
+}
+
+character_event = {
+	id = greenskin_horde_events.4 #war event modified to target primary top liege holding w/ greenskin invasion cb
+	hide_window = yes
+	only_playable = yes
+	is_triggered_only = yes
+
+
+	immediate = {
+		random_playable_ruler = {
+			limit = { has_opinion_modifier = { who = ROOT modifier = preparing_waaagh_against_me_vandv_opinion } }
+			primary_title = {
+				holder_scope = {
+					ROOT = {
+						war = {
+							casus_belli = waaagh_invasion_vandv
+							target = PREV # The top liege of the owner of the province
+							thirdparty_title = PREVPREV # The de jure kingdom
+							tier = KING
+							}
+						}
+					}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = greenskin_horde_events.5
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+
+
+	immediate = {
+		capital_scope = {
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 5000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = greenskin_horde_events.6
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+
+
+	immediate = {
+		capital_scope = {
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 10000
+					match_max = 10000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 10000
+					match_max = 10000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 10000
+					match_max = 10000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 10000
+					match_max = 10000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 10000
+					match_max = 10000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 10000
+					match_max = 10000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = greenskin_horde_events.7
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+
+
+	immediate = {
+		capital_scope = {
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 15000
+					match_max = 15000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 15000
+					match_max = 15000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 15000
+					match_max = 15000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 15000
+					match_max = 15000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 15000
+					match_max = 15000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 30
+				attributes = {
+					martial = 8
+				}
+				trait = brave
+				trait = zealous
+				trait = brilliant_strategist
+				trait = holy_warrior
+			}
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 15000
+					match_max = 15000
+					earmark = prepared_invasion
+					attrition = 0.4
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = greenskin_horde_events.8 #cleanup if invasion doesn't fire
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_character_modifier = preparing_waaagh_invasion
+	}
+
+	immediate = {
+		remove_character_modifier = preparing_waaagh_invasion 
+		clr_character_flag = preparing_waaagh_invasion_flag
+		add_character_modifier = { 
+				modifier = attempted_waaagh
+				duration = 3650 
+		}
+		disband_event_forces = prepared_invasion		
+	}
+}
+character_event = {
+id = greenskin_horde_events.9
+	hide_window = yes
+	only_playable = yes
+	
+	prisoner = no
+    min_age = 16
+    capable_only = yes
+	is_triggered_only = yes
+	
+	
+	immediate = {
+		capital_scope = {
+			ROOT = {
+				add_trait = strong
+				add_trait = duelist
+				add_trait = strategist
+				add_trait = sword_5
+				add_trait = amulet_of_protection_3
+				add_trait = orc_invader
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 10000
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 3000 3000 }
+							pikemen = { 500 500 }
+							heavy_infantry = { 500 500 }
+					}
+					attrition = 0.0
+					cannot_inherit = yes
+				}
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 10000
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 3000 3000 }
+							pikemen = { 500 500 }
+							heavy_infantry = { 500 500 }
+					}
+					attrition = 0.0
+					cannot_inherit = yes
+				}
+								spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 10000
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 3000 3000 }
+							pikemen = { 500 500 }
+							heavy_infantry = { 500 500 }
+					}
+					attrition = 0.0
+					cannot_inherit = yes
+				}
+				spawn_unit = {
+					province = PREV
+					owner = ROOT
+					match_character = ROOT
+					match_mult = 0.5
+					match_min = 5000
+					match_max = 10000
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 3000 3000 }
+							pikemen = { 500 500 }
+							heavy_infantry = { 500 500 }
+					}
+					attrition = 0.0
+					cannot_inherit = yes
+				}
+			}
+		}
+	}
+}

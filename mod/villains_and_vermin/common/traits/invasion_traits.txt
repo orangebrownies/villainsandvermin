@@ -1,0 +1,105 @@
+undead_champion = {
+	customizer = no
+	random = no
+	immortal = yes
+	fertility = -10.0
+	health = 100
+	cannot_inherit = yes
+	cannot_marry = yes
+	ai_ambition = -100
+	ai_greed = -100
+	ai_zeal = 100
+	ai_rationality = 75
+	combat_rating = 5
+}
+
+excellent_advisors = {
+	cached = yes
+	customizer = no
+	random = no
+	
+	ai_ambition = 1000
+	
+	land_morale = 0.1
+	global_tax_modifier = 4
+	vassal_opinion = 60
+	health = 4
+	
+	diplomacy = 5
+	martial = 10
+	stewardship = 5
+	intrigue = 5
+	learning = 5
+}
+
+dark_necromancer = {
+	customizer = no
+	random = no
+	health = 8
+	combat_rating = 2
+}
+
+skaven_death_target = {
+	cached = yes
+	customizer = no
+	random = no
+}
+
+favorite_rebel_vassal = {
+	cached = yes
+	customizer = no
+	random = no
+}
+
+time_of_troubles = {
+	cached = yes
+	customizer = no
+	random = no
+}
+
+great_invader = {
+	cached = yes
+	customizer = no
+	random = no
+}
+
+chaos_invader = {
+	ai_ambition = 1000
+	global_tax_modifier = 3
+
+	cached = yes
+	customizer = no
+	random = no
+}
+
+undead_invader = {
+	ai_ambition = 1000
+	global_tax_modifier = 3
+	
+	cached = yes
+	customizer = no
+	random = no
+}
+
+orc_invader = {
+	ai_ambition = 1000
+	global_tax_modifier = 3
+	martial = 4
+	combat = 3
+	
+	cached = yes
+	customizer = no
+	random = no
+}
+
+high_mage_assistant = {
+	cached = yes
+	customizer = no
+	random = no
+}
+
+necro_college_mage = {
+	cached = yes
+	customizer = no
+	random = no
+}

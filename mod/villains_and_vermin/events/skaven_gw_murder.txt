@@ -1,0 +1,111 @@
+namespace=skaven_gw_murder_events
+character_event = {
+	id = skaven_gw_murder_events.1 # The Skavening
+	desc = "EVTDESCSKAVENGWMURDER1"
+	picture = "GFX_evt_skaven_assassin"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = skaven_great_war_ongoing
+	}
+	
+    immediate = {
+		random_playable_ruler = {
+			limit = { culture = eshin }
+			save_event_target_as = skaven_assassin
+		}
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGWMURDER1A"
+		random_realm_lord = {
+			limit = { 
+				AND = { 
+					lower_tier_than = king
+					higher_tier_than = count
+				}
+			}
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+		random_realm_lord = {
+			limit = { lower_tier_than = duke }
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+		random_realm_lord = {
+			limit = { lower_tier_than = duke }
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+		random_realm_lord = {
+			limit = { higher_tier_than = baron }
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+		random_realm_lord = {
+			limit = { 
+				AND = { 
+					lower_tier_than = king
+					higher_tier_than = baron
+				}
+			}
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+		random_realm_lord = {
+			limit = { 
+				AND = { 
+					lower_tier_than = king
+					higher_tier_than = baron
+				}
+			}
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+	}
+}
+
+character_event = {
+	id = skaven_gw_murder_events.2 # The Skavening
+	desc = "EVTDESCSKAVENGWMURDER2"
+	picture = "GFX_evt_skaven_assassin"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = skaven_great_war_ongoing
+	}
+	
+    immediate = {
+		random_playable_ruler = {
+			limit = { culture = eshin }
+			save_event_target_as = skaven_assassin
+		}
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGWMURDER2A"
+		random_realm_lord = {
+			limit = { 
+				lower_tier_than = king
+				higher_tier_than = count
+			}
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+		random_realm_lord = {
+			limit = { lower_tier_than = duke }
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+		random_realm_lord = {
+			limit = { 
+				AND = { 
+					lower_tier_than = king
+					higher_tier_than = baron
+				}
+			}
+			death = { death_reason = death_murder killer = event_target:skaven_assassin }
+		}
+	}
+}

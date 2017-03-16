@@ -1,0 +1,214 @@
+namespace=skaven_gw_event
+character_event = {
+	id = skaven_gw_event.1 # The Skavening
+	desc = "EVTDESCSKAVENGW1"
+	picture = "GFX_evt_skaven_assassin"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { trait = vampire_necrarch_visible }
+		NOT = { culture_group = skaven_group }
+		NOT = {
+			OR = {
+				religion_group = greenskin_gods_group
+				culture_group = orc_group
+				culture_group = goblin_group
+			}
+		}
+	}
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGW1A"
+		
+		capital_scope = {
+			set_province_flag = skaven_great_war_target_prov
+			province_event = { id = skaven_gw_event.2 }
+			province_event = { id = skaven_gw_event.4 days = 25 }
+			province_event = { id = skaven_gw_event.3 days = 160 random = 20 }
+			province_event = { id = skaven_gw_event.7 days = 700 random = 60 }
+		}
+		#character_event = { id = skaven_gw_invasions_events.1 days = 10 }
+		set_global_flag = skaven_great_war_ongoing
+	}
+}
+
+province_event = {
+	id = skaven_gw_event.2
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		if = { limit = { holder_scope = { culture_group = skaven_group } }
+			province_event = { id = skaven_gw_endgame_events.1 } # check to see if target still controls capital
+		}
+		if = { limit = { holder_scope = { top_liege = { NOT = { higher_tier_than = KING } } } }
+			province_event = { id = skaven_gw_endgame_events.1 } # check to see if empire still exists
+		}
+		if = { limit = { had_global_flag = { flag = skaven_great_war_ongoing days = 5000 }  }
+			province_event = { id = skaven_gw_endgame_events.2 } # check to see if skaven invasion is collapsing after some yrs
+		}
+		province_event = { id = skaven_gw_event.2 days = 60 }
+	}
+}
+
+province_event = {
+	id = skaven_gw_event.3
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+					character_event = { id = skaven_gw_murder_events.1 }
+			}
+		}
+		province_event = { id = skaven_gw_event.5 days = 365 random = 30 }
+	}
+}
+
+
+province_event = {
+	id = skaven_gw_event.4
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+					character_event = { id = skaven_gw_plague_events.1 }
+			}
+		}
+		province_event = { id = skaven_gw_event.6 days = 740 }
+	}
+}
+
+province_event = {
+	id = skaven_gw_event.5
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+					character_event = { id = skaven_gw_murder_events.2 }
+			}
+		}
+		if = { limit = { NOT = { had_global_flag = { flag = skaven_great_war_ongoing days = 3240 } } }
+			province_event = { id = skaven_gw_event.5 days = 365 random = 90 } # after a certain point, murder stops
+		}
+	}
+}
+
+province_event = {
+	id = skaven_gw_event.6
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+					character_event = { id = skaven_gw_plague_events.2 }
+			}
+		}
+		if = { limit = { NOT = { had_global_flag = { flag = skaven_great_war_ongoing days = 3240 } } }
+			province_event = { id = skaven_gw_event.6 days = 740 } # after a certain point, disease stops
+		}
+	}
+}
+
+province_event = {
+	id = skaven_gw_event.7
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+					character_event = { id = skaven_gw_invasions_events.1 }
+			}
+		}
+		province_event = { id = skaven_gw_event.8 days = 400 random = 100 }
+	}
+}
+
+province_event = {
+	id = skaven_gw_event.8
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+					character_event = { id = skaven_gw_invasions_events.2 }
+			}
+		}
+		if = { limit = { had_province_flag = { flag = skaven_great_war_target_prov days = 3000 } }
+			province_event = { id = skaven_gw_event.9 days = 400 random = 100 }
+		}
+		if = { limit = { NOT = { had_province_flag = { flag = skaven_great_war_target_prov days = 3000 } } }
+			province_event = { id = skaven_gw_event.8 days = 400 random = 100 }
+		}
+	}
+}
+
+province_event = {
+	id = skaven_gw_event.9
+	hide_window = yes
+	only_playable = yes
+	
+	is_triggered_only = yes
+	trigger = {
+		has_province_flag = skaven_great_war_target_prov
+	}
+	
+	immediate = {
+		holder_scope = {
+			top_liege = {
+					character_event = { id = skaven_gw_invasions_events.3 }
+			}
+		}
+	}
+}

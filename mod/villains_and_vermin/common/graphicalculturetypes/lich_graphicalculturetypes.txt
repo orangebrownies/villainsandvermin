@@ -1,0 +1,3 @@
+lichgfx = {
+	skin_tone = 1
+	}

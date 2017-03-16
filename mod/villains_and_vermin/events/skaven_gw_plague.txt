@@ -1,0 +1,134 @@
+namespace=skaven_gw_plague_events
+character_event = {
+	id = skaven_gw_plague_events.1 # The Skavening
+	desc = "EVTDESCSKAVENGWPLAGUE1"
+	picture = "GFX_evt_skaven_swamp"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+    immediate = {
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				has_province_modifier = skaven_great_war_pox_3
+			}
+			location = {
+				spawn_disease = typhus
+				remove_province_modifier  = skaven_great_war_pox_3
+				add_province_modifier = { name = skaven_great_war_pox_3 duration = 1850 }
+			}
+		}
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				has_province_modifier = skaven_great_war_pox_2
+			}
+			location = {
+				spawn_disease = typhus
+				remove_province_modifier  = skaven_great_war_pox_2
+				add_province_modifier = { name = skaven_great_war_pox_3 duration = 1850 }
+			}
+		}
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				has_province_modifier = skaven_great_war_pox_1
+			}
+			location = {
+				spawn_disease = typhus
+				remove_province_modifier  = skaven_great_war_pox_1
+				add_province_modifier = { name = skaven_great_war_pox_2 duration = 1850 } 
+			}
+		}
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				NOT = { has_province_modifier = skaven_great_war_pox_1 }
+				NOT = { has_province_modifier = skaven_great_war_pox_2 }
+				NOT = { has_province_modifier = skaven_great_war_pox_3 }
+			}
+			location = {
+				spawn_disease = typhus
+				add_province_modifier = { name = skaven_great_war_pox_1 duration = 1850 } 
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGWPLAGUE1A"
+		
+	}
+}
+
+character_event = {
+	id = skaven_gw_plague_events.2 # The Skavening
+	desc = "EVTDESCSKAVENGWPLAGUE2"
+	picture = "GFX_evt_skaven_swamp"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+    immediate = {
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				has_province_modifier = skaven_great_war_pox_3
+			}
+			location = {
+				spawn_disease = typhus
+				remove_province_modifier  = skaven_great_war_pox_3
+				add_province_modifier = { name = skaven_great_war_pox_3 duration = 1850 }
+			}
+		}
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				has_province_modifier = skaven_great_war_pox_2
+			}
+			location = {
+				spawn_disease = typhus
+				remove_province_modifier  = skaven_great_war_pox_2
+				add_province_modifier = { name = skaven_great_war_pox_3 duration = 1850 }
+			}
+		}
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				has_province_modifier = skaven_great_war_pox_1
+			}
+			location = {
+				spawn_disease = typhus
+				remove_province_modifier  = skaven_great_war_pox_1
+				add_province_modifier = { name = skaven_great_war_pox_2 duration = 1850 } 
+			}
+		}
+		any_realm_province = {
+			limit = {
+				num_of_settlements = 4
+				NOT = { has_province_modifier = skaven_great_war_pox_1 }
+				NOT = { has_province_modifier = skaven_great_war_pox_2 }
+				NOT = { has_province_modifier = skaven_great_war_pox_3 }
+			}
+			location = {
+				spawn_disease = typhus
+				add_province_modifier = { name = skaven_great_war_pox_1 duration = 1850 } 
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGWPLAGUE2A"
+		
+	}
+}

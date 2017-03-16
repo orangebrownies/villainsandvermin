@@ -1,0 +1,865 @@
+namespace=chaos_prince_uprising
+character_event = {
+id = chaos_prince_uprising.1
+    desc = EVTDESCPRINCEUPRISINGREINF
+    picture = "GFX_evt_khorne"
+	only_rulers = yes
+	prisoner = no
+    min_age = 16
+    capable_only = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTDESCPRINCEUPRISINGREINFA
+		capital_scope = {
+			ROOT = {
+				spawn_unit = {
+					cannot_inherit = yes
+					province = PREV
+					owner = ROOT
+					troops =
+						{
+							daemonic_host = { 2500 2500 }
+					}
+					attrition = 0.0
+				}
+			}
+		}
+		character_event = { id = chaos_prince_uprising.1 days = 730 }
+	}
+}
+
+character_event = {
+id = chaos_prince_uprising.2
+    desc = EVTDESCKHORNEPRINCEUPRISING # Chaos Uprising
+    picture = "GFX_evt_khorne"
+	only_rulers = yes
+    min_age = 16
+    capable_only = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTDESCKHORNEPRINCEUPRISINGA
+		set_character_flag = summonedkhornehost
+		set_character_flag = khorne_invasion_host
+		religion = khorne
+		add_trait = ambitious
+		add_trait = chaos_invader
+		add_trait = prince_khorne
+		add_trait = khorne_demon
+		set_graphical_culture = prince_khorne
+		add_trait = sword_5
+		add_trait = impaler
+		add_trait = wroth
+		add_trait = amulet_of_protection_5
+		hidden_tooltip = { 1 = { change_variable = { which = "doom_counter" value = 1 } }
+				if = { limit = { NOT = { check_variable = { which = "nurgle_favor" value = 1 } }
+					 NOT = { check_variable = { which = "slaanesh_favor" value = 1 } }
+					 NOT = { check_variable = { which = "tzeentch_favor" value = 1 } } } 
+					change_variable = { which = "khorne_favor" value = 1 } }
+
+				if = { limit = { OR = { check_variable = { which = "nurgle_favor" value = 1 }
+							check_variable = { which = "slaanesh_favor" value = 1 }
+							check_variable = { which = "tzeentch_favor" value = 1 } } } 
+					change_variable = { which = "nurgle_favor" value = -2 }
+					change_variable = { which = "slaanesh_favor" value = -2 }
+					change_variable = { which = "tzeentch_favor" value = -2 } } }
+
+		if = {
+			limit = {
+				top_liege = {
+					NOT = { religion = khorne }
+				}
+			}
+			top_liege = {
+				ROOT = {
+					set_defacto_liege = PREV
+				}
+			}
+			liege = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = cultist_bid_for_independence
+				}
+			}
+		}
+		wealth = 5000
+		prestige = 500
+		piety = 500
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					culture_group = ROOT
+					same_realm = ROOT
+				}
+			}
+			character_event = { id = khornecultist.15 days = 7 }
+		}	
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = bloodletter_khorne
+			religion = khorne
+			age = 888
+			attributes = {
+				martial = 20
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 4
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = cruel
+			trait = proud
+			trait = zealous
+			trait = khorne_demon
+			trait = khorne_bloodletter
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = bloodletter_khorne
+			religion = khorne
+			age = 888
+			attributes = {
+				martial = 20
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 4
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = cruel
+			trait = proud
+			trait = zealous
+			trait = khorne_demon
+			trait = khorne_bloodletter
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = bloodletter_khorne
+			religion = khorne
+			age = 888
+			attributes = {
+				martial = 20
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 4
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = cruel
+			trait = proud
+			trait = zealous
+			trait = khorne_demon
+			trait = khorne_bloodletter
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		
+		character_event = { id = chaos_prince_uprising.1 days = 365 }
+		character_event = { id = khorne_prince_events.1 days = 365 }
+	}
+	
+	option = {
+	name = EVTDESCKHORNEPRINCEUPRISINGA #No, now is not the opportune time...
+	trigger = { ai = no }
+	}
+}
+
+character_event = {
+id = chaos_prince_uprising.3
+    desc = EVTDESCNURGLEPRINCEUPRISING
+    picture = "GFX_evt_nurgle"
+	only_rulers = yes
+    min_age = 16
+    capable_only = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTDESCNURGLEPRINCEUPRISINGA #GIMMEAHUG
+		set_character_flag = summonednurglehost
+		set_character_flag = nurgle_invasion_host
+		religion = nurgle
+		add_trait = ambitious
+		add_trait = chaos_invader
+		add_trait = prince_nurgle
+		add_trait = nurgle_demon
+		set_graphical_culture = prince_nurgle
+		add_trait = sword_5
+		add_trait = impaler
+		add_trait = wroth
+		add_trait = lunatic_1
+		add_trait = amulet_of_protection_5
+		add_character_modifier = { modifier = magic_power_4 days = -1 }
+		add_trait = lore_nurgle
+		add_trait = zealous
+		add_trait = magic_potential_2
+		add_trait = has_typhoid_fever
+		add_trait = has_bubonic_plague
+		add_trait = has_small_pox
+		
+		hidden_tooltip = {  1 = { change_variable = { which = "doom_counter" value = 1 } }
+				if = { limit = { NOT = { check_variable = { which = "khorne_favor" value = 1 } }
+					 NOT = { check_variable = { which = "slaanesh_favor" value = 1 } }
+					 NOT = { check_variable = { which = "tzeentch_favor" value = 1 } } } 
+					change_variable = { which = "nurgle_favor" value = 1 } }
+
+				if = { limit = { OR = { check_variable = { which = "khorne_favor" value = 1 }
+							check_variable = { which = "slaanesh_favor" value = 1 }
+							check_variable = { which = "tzeentch_favor" value = 1 } } } 
+					change_variable = { which = "khorne_favor" value = -2 }
+					change_variable = { which = "slaanesh_favor" value = -2 }
+					change_variable = { which = "tzeentch_favor" value = -2 } } }
+
+		if = {
+			limit = {
+				top_liege = {
+					NOT = { religion = nurgle }
+				}
+			}
+			top_liege = {
+				ROOT = {
+					set_defacto_liege = PREV
+				}
+			}
+			liege = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = cultist_bid_for_independence
+				}
+			}
+		}
+		wealth = 5000
+		prestige = 500
+		piety = 500
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					culture_group = ROOT
+					same_realm = ROOT
+				}
+			}
+			character_event = { id = nurglecultist.15 days = 7 }
+		}	
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = plaguebearer_nurgle
+			religion = nurgle
+			age = 777
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 10
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = lunatic_3
+			trait = hedonist
+			trait = cruel
+			trait = zealous
+			trait = nurgle_demon
+			trait = nurgle_plaguebearer
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			add_trait = has_typhoid_fever
+			add_trait = has_bubonic_plague
+			add_trait = has_small_pox
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = plaguebearer_nurgle
+			religion = nurgle
+			age = 777
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 10
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = lunatic_3
+			trait = hedonist
+			trait = cruel
+			trait = zealous
+			trait = nurgle_demon
+			trait = nurgle_plaguebearer
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			add_trait = has_typhoid_fever
+			add_trait = has_bubonic_plague
+			add_trait = has_small_pox
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = plaguebearer_nurgle
+			religion = nurgle
+			age = 777
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 10
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = lunatic_3
+			trait = hedonist
+			trait = cruel
+			trait = zealous
+			trait = nurgle_demon
+			trait = nurgle_plaguebearer
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			add_trait = has_typhoid_fever
+			add_trait = has_bubonic_plague
+			add_trait = has_small_pox	
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		
+		character_event = { id = chaos_prince_uprising.1 days = 365 }
+		character_event = { id = nurgle_prince_events.1 days = 60 }
+	}
+	
+	option = {
+	name = EVTDESCKHORNEPRINCEUPRISINGA #No, now is not the opportune time...
+	trigger = { ai = no }
+	}
+}
+
+character_event = {
+id = chaos_prince_uprising.4
+    desc = EVTDESCTZEENTCHPRINCEUPRISING # Chaos Uprising
+    picture = "GFX_evt_tzeentch"
+	only_rulers = yes
+    min_age = 16
+    capable_only = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTDESCTZEENTCHPRINCEUPRISINGA #PRYINGOPENMYTHIRDEYE
+		set_character_flag = summonedtzeentchhost
+		set_character_flag = tzeentch_invasion_host
+		religion = tzeentch
+		add_trait = ambitious
+		add_trait = chaos_invader
+		add_trait = prince_tzeentch
+		add_trait = tzeentch_demon
+		set_graphical_culture = prince_tzeentch
+		add_trait = sword_4
+		add_trait = impaler
+		add_trait = wroth
+		add_trait = lunatic_2
+		add_trait = amulet_of_protection_5
+		add_character_modifier = { modifier = magic_power_4 days = -1 }
+		add_trait = lore_tzeentch
+		add_trait = zealous
+		add_trait = magic_potential_3
+		add_trait = genius
+		add_trait = mystic
+		hidden_tooltip = {  1 = { change_variable = { which = "doom_counter" value = 1 } }
+				if = { limit = { NOT = { check_variable = { which = "nurgle_favor" value = 1 } }
+					 NOT = { check_variable = { which = "khorne_favor" value = 1 } }
+					 NOT = { check_variable = { which = "slaanesh_favor" value = 1 } } } 
+					change_variable = { which = "tzeentch_favor" value = 1 } }
+
+				if = { limit = { OR = { check_variable = { which = "nurgle_favor" value = 1 }
+							check_variable = { which = "khorne_favor" value = 1 }
+							check_variable = { which = "slaanesh_favor" value = 1 } } } 
+					change_variable = { which = "nurgle_favor" value = -2 }
+					change_variable = { which = "khorne_favor" value = -2 }
+					change_variable = { which = "slaanesh_favor" value = -2 } } }
+
+		if = {
+			limit = {
+				top_liege = {
+					NOT = { religion = tzeentch }
+				}
+			}
+			top_liege = {
+				ROOT = {
+					set_defacto_liege = PREV
+				}
+			}
+			liege = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = cultist_bid_for_independence
+				}
+			}
+		}
+		wealth = 5000
+		prestige = 500
+		piety = 500
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					culture_group = ROOT
+					same_realm = ROOT
+				}
+			}
+			character_event = { id = tzeentchcultist.15 days = 7 }
+		}	
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = flamer_tzeentch
+			religion = tzeentch
+			age = 999
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 30
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = genius
+			trait = mystic
+			trait = cruel
+			trait = zealous
+			trait = tzeentch_demon
+			trait = tzeentch_flamer
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = flamer_tzeentch
+			religion = tzeentch
+			age = 999
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 30
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = genius
+			trait = mystic
+			trait = cruel
+			trait = zealous
+			trait = tzeentch_demon
+			trait = tzeentch_flamer
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = flamer_tzeentch
+			religion = tzeentch
+			age = 999
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 30
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = genius
+			trait = mystic
+			trait = cruel
+			trait = zealous
+			trait = tzeentch_demon
+			trait = tzeentch_flamer
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		
+		character_event = { id = chaos_prince_uprising.1 days = 365 }
+		character_event = { id = tzeentch_prince_events.1 days = 365 }
+	}
+	
+	option = {
+	name = EVTDESCKHORNEPRINCEUPRISINGA #No, now is not the opportune time...
+	trigger = { ai = no }
+	}
+}
+character_event = {
+id = chaos_prince_uprising.5
+    desc = EVTDESCSLAANESHPRINCEUPRISING # Chaos Uprising
+    picture = "GFX_evt_slaanesh"
+	only_rulers = yes
+    min_age = 16
+    capable_only = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTDESCSLAANESHPRINCEUPRISINGA #ITSNOTENOUGHINEEDMORENOTHINGSEEMSTOSATISFY
+		set_character_flag = summonedslaaneshhost
+		set_character_flag = slaanesh_invasion_host
+		religion = slaanesh
+		add_trait = ambitious
+		add_trait = chaos_invader
+		add_trait = prince_slaanesh
+		add_trait = slaanesh_demon
+		set_graphical_culture = prince_slaanesh
+		add_trait = sword_5
+		add_trait = impaler
+		add_trait = wroth
+		add_trait = amulet_of_protection_5
+		add_character_modifier = { modifier = magic_power_3 days = -1 }
+		add_trait = lore_slaanesh
+		add_trait = magic_potential_2
+		add_trait = hedonist
+		add_trait = zealous
+		hidden_tooltip = {  1 = { change_variable = { which = "doom_counter" value = 1 } }
+				if = { limit = { NOT = { check_variable = { which = "nurgle_favor" value = 1 } }
+					 NOT = { check_variable = { which = "khorne_favor" value = 1 } }
+					 NOT = { check_variable = { which = "slaanesh_favor" value = 1 } } } 
+					change_variable = { which = "tzeentch_favor" value = 1 } }
+
+				if = { limit = { OR = { check_variable = { which = "nurgle_favor" value = 1 }
+							check_variable = { which = "khorne_favor" value = 1 }
+							check_variable = { which = "slaanesh_favor" value = 1 } } } 
+					change_variable = { which = "nurgle_favor" value = -2 }
+					change_variable = { which = "khorne_favor" value = -2 }
+					change_variable = { which = "slaanesh_favor" value = -2 } } }
+
+		if = {
+			limit = {
+				top_liege = {
+					NOT = { religion = slaanesh }
+				}
+			}
+			top_liege = {
+				ROOT = {
+					set_defacto_liege = PREV
+				}
+			}
+			liege = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = cultist_bid_for_independence
+				}
+			}
+		}
+		wealth = 5000
+		prestige = 500
+		piety = 500
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					culture_group = ROOT
+					same_realm = ROOT
+				}
+			}
+			character_event = { id = slaaneshcultist.15 days = 7 }
+		}	
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = daemonette_slaanesh
+			religion = slaanesh
+			age = 666
+			female = yes
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 10
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = slaanesh_demon
+			trait = slaanesh_daemonette
+			trait = wroth
+			trait = cruel
+			trait = hedonist
+			trait = arbitrary
+			trait = zealous
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			set_graphical_culture = daemonettegfx
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_intriguer = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = daemonette_slaanesh
+			religion = slaanesh
+			age = 666
+			female = yes
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 15
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = slaanesh_demon
+			trait = slaanesh_daemonette
+			trait = schemer
+			trait = impaler
+			trait = hedonist
+			trait = zealous
+			trait = beautiful
+			trait = arbitrary
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			set_graphical_culture = daemonettegfx
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = no
+			dynasty = RANDOM
+			culture = daemonette_slaanesh
+			religion = slaanesh
+			age = 666
+			female = yes
+			attributes = {
+				martial = 15
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 9
+				learning = 9
+			}
+			health = 6
+			fertility = 0.7
+			trait = slaanesh_demon
+			trait = slaanesh_daemonette
+			trait = wroth
+			trait = cruel
+			trait = lustful
+			trait = zealous
+			trait = strategist
+		}
+		new_character = {
+			set_character_flag = host_demon_commander
+			set_graphical_culture = daemonettegfx
+			add_friend = ROOT	#familiar mechanics
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						troops =
+						{
+							daemonic_host = { 7000 7000 }
+						}
+						attrition = 0.0
+					}
+				}
+			}
+		}
+		
+		character_event = { id = chaos_prince_uprising.1 days = 365 }
+	}
+	
+	option = {
+	name = EVTDESCKHORNEPRINCEUPRISINGA #No, now is not the opportune time...
+	trigger = { ai = no }
+	}
+}

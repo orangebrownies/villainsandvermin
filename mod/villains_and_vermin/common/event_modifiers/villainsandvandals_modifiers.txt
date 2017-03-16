@@ -1,0 +1,16 @@
+time_of_troubles_modifier = {
+	icon = 1
+	vassal_opinion = -100
+	general_opinion = -100
+}
+
+rebel_vassal_leader_modifier = {
+	icon = 1
+	martial = 20
+	general_opinion = 200
+}
+
+preparing_waaagh_vandv = {
+	icon = 31
+	monthly_character_prestige = 0.1
+}  

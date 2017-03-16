@@ -1,0 +1,365 @@
+namespace=skaven_gw_invasions_events
+character_event = {
+	id = skaven_gw_invasions_events.1 # The Skavening
+	desc = "EVTDESCSKAVENGWINVASION1"
+	picture = "GFX_evt_skaven_war"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { trait = vampire_necrarch_visible }
+		NOT = { culture_group = skaven_group }
+		NOT = {
+			OR = {
+				religion_group = greenskin_gods_group
+				culture_group = orc_group
+				culture_group = goblin_group
+			}
+		}
+	}
+	
+    immediate = {
+		any_realm_province = { #random duchy not owned by empire holder
+            random_neighbor_province = {
+				limit = {
+					owner = {
+						NOT = {
+							same_realm = ROOT
+						}
+						culture_group = skaven_group
+					}
+				}
+				owner = {
+					top_liege = {
+						save_event_target_as = skaven_invader_initiator
+					}
+				}
+				#province_event = { id = skaven_horde_events.2 }
+            }
+        }
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGWINVASION1A"
+		random_realm_province = {
+			limit = {
+				AND = {
+					holder_scope = {
+						top_liege = {
+							character = ROOT
+						}	
+					}
+					duchy = {
+						holder_scope = {
+							NOT = {
+								character = ROOT
+							}
+						}
+					}
+				}
+			}
+			duchy = {
+				event_target:skaven_invader_initiator = {
+				set_character_flag = skaven_gw_invader_now
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 4
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							gunpowder = { 400 400 }
+					}
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 4
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							gunpowder = { 400 400 }
+					}
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 4
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							artillery = { 600 600 }
+					}
+					earmark = last_troops_invasion
+					attrition = 0.0
+				}
+					war = {
+						casus_belli = skaven_greatwarcb
+						target = ROOT # The top liege of the owner of the province
+						thirdparty_title = PREV # The de jure duchy
+						tier = DUKE
+					}
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = skaven_gw_invasions_events.2 # The Skavening
+	desc = "EVTDESCSKAVENGWINVASION2"
+	picture = "GFX_evt_skaven_war"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { trait = vampire_necrarch_visible }
+		NOT = { culture_group = skaven_group }
+		NOT = {
+			OR = {
+				religion_group = greenskin_gods_group
+				culture_group = orc_group
+				culture_group = goblin_group
+			}
+		}
+	}
+	
+    immediate = {
+		any_realm_province = { #random duchy not owned by empire holder
+            random_neighbor_province = {
+				limit = {
+					owner = {
+						NOT = {
+							same_realm = ROOT
+						}
+						culture_group = skaven_group
+					}
+				}
+				owner = {
+					top_liege = {
+						save_event_target_as = skaven_invader_initiator
+					}
+				}
+				#province_event = { id = skaven_horde_events.2 }
+            }
+        }
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGWINVASION2A"
+		random_realm_province = {
+			limit = {
+				AND = {
+					holder_scope = {
+						top_liege = {
+							character = ROOT
+						}	
+					}
+					duchy = {
+						holder_scope = {
+							NOT = {
+								character = ROOT
+							}
+						}
+					}
+				}
+			}
+			duchy = {
+				event_target:skaven_invader_initiator = {
+				set_character_flag = skaven_gw_invader_now
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 4
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							gunpowder = { 400 400 }
+					}
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 4
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							gunpowder = { 400 400 }
+					}
+					earmark = last_troops_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 4
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							artillery = { 600 600 }
+					}
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+					war = {
+						casus_belli = skaven_greatwarcb
+						target = ROOT # The top liege of the owner of the province
+						thirdparty_title = PREV # The de jure duchy
+						tier = DUKE
+					}
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = skaven_gw_invasions_events.3 # The Skavening
+	desc = "EVTDESCSKAVENGWINVASION3"
+	picture = "GFX_evt_skaven_war"
+	
+	only_playable = yes
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { trait = vampire_necrarch_visible }
+		NOT = { culture_group = skaven_group }
+		NOT = {
+			OR = {
+				religion_group = greenskin_gods_group
+				culture_group = orc_group
+				culture_group = goblin_group
+			}
+		}
+	}
+	
+    immediate = {
+		any_realm_province = {
+            random_neighbor_province = {
+				limit = {
+					owner = {
+						NOT = {
+							same_realm = ROOT
+						}
+						culture_group = skaven_group
+					}
+				}
+				owner = {
+					top_liege = {
+						save_event_target_as = skaven_invader_initiator
+					}
+				}
+				#province_event = { id = skaven_horde_events.2 }
+            }
+        }
+	}
+	
+	option = {
+		name = "EVTDESCSKAVENGWINVASION3A"
+		random_realm_province = {
+			limit = { has_province_flag = skaven_great_war_target_prov }
+			duchy = {
+				event_target:skaven_invader_initiator = {
+				any_war = {
+					limit = {
+						attacker = { 
+							character = event_target:skaven_invader_initiator
+						}
+						OR = { 
+							using_cb = skaven_incursioncb
+							using_cb = skaven_greatwarcb
+							using_cb = skaven_greatwarendcb
+							using_cb = skaven_tributary_cb
+							using_cb = skaven_county_conquest
+							using_cb = skaven_foreignconquest
+						}
+					}
+					end_war = invalid
+				}
+				set_character_flag = skaven_gw_invader_now
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 5
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							gunpowder = { 400 400 }
+					}
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 5
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							gunpowder = { 400 400 }
+					}
+					earmark = last_troops_invasion
+					attrition = 0.0
+				}
+				spawn_unit = {
+					province = PREVPREV
+					owner = THIS
+					scaled_by_biggest_garrison = 5
+					troops =
+						{
+							archers = { 250 250 }
+							light_infantry = { 2000 2000 }
+							pikemen = { 300 300 }
+							heavy_infantry = { 300 300 }
+							artillery = { 600 600 }
+					}
+					earmark = prepared_invasion
+					attrition = 0.0
+				}
+					war = {
+						casus_belli = skaven_greatwarendcb
+						target = ROOT # The top liege of the owner of the province
+						thirdparty_title = PREV # The de jure duchy
+						tier = DUKE
+					}
+				}
+			}
+		}
+	}
+}

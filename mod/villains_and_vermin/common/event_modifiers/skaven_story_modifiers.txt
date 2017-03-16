@@ -1,0 +1,48 @@
+skaven_incursion_target_province = {
+	local_revolt_risk = 0.10
+	icon = 86
+}
+skaven_incursion_start_province = {
+	city_tax_modifier = -0.05
+	icon = 86
+}
+
+skaven_incursion_target_ruler = {
+	icon = 1
+}
+
+skaven_great_war_pox_1 = {
+	city_tax_modifier = -0.2
+	castle_tax_modifier = -0.2
+	temple_tax_modifier = -0.2
+	local_build_time_modifier = 0.1
+	local_build_cost_modifier = 0.1
+	castle_levy_size = -0.2
+	city_levy_size = -0.2
+	temple_levy_size = -0.2
+	icon = 88
+}
+
+skaven_great_war_pox_2 = {
+	city_tax_modifier = -0.4
+	castle_tax_modifier = -0.4
+	temple_tax_modifier = -0.4
+	local_build_time_modifier = 0.2
+	local_build_cost_modifier = 0.2
+	castle_levy_size = -0.4
+	city_levy_size = -0.4
+	temple_levy_size = -0.4
+	icon = 88
+} 
+
+skaven_great_war_pox_3 = {
+	city_tax_modifier = -0.6
+	castle_tax_modifier = -0.6
+	temple_tax_modifier = -0.6
+	local_build_time_modifier = 0.3
+	local_build_cost_modifier = 0.3
+	castle_levy_size = -0.6
+	city_levy_size = -0.6
+	temple_levy_size = -0.6
+	icon = 88
+}

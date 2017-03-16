@@ -1,0 +1,35 @@
+#####Modifiers
+#####decisions
+skaven_incursion_vandv;Skaven Incursion;;;;;;;;;;;;x
+skaven_incursion_vandv_desc;This character's realm will be attacked by nearby Skaven;;;;;;;;;;;;x
+skaven_greatwar_dec_vandv;Start Skaven Great War;;;;;;;;;;;;x
+skaven_greatwar_dec_vandv_desc;This empire will experience a long and brutal Skaven Great War.;;;;;;;;;;;;x
+####events
+EVTDESCSKAVENGW1;There are numerous reports and rumours from across your realm of furtive figures skulking in and out of sewers during the twilight hours.  Your council believes the reports to be nothing to worry about.;;;;;;;;;;;;;x
+EVTDESCSKAVENGW1A;People can be so paranoid!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWPLAGUE1;The red pox has sprouted in all your major cities across the realm.  The speed of the spread and timing is unnatural - there is something or someone behind this.;;;;;;;;;;;;;x
+EVTDESCSKAVENGWPLAGUE1A;Damnation!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWPLAGUE2;The red pox has returned in force, ravaging your cities again.;;;;;;;;;;;;;x
+EVTDESCSKAVENGWPLAGUE2A;Damnation!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWMURDER1;A number of nobles have turned up dead in their bedrooms during the past few nights.  It appears as if this is the start of a campaign of murder against your realm.;;;;;;;;;;;;;x
+EVTDESCSKAVENGWMURDER1A;Damnation!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWMURDER2;A number of nobles have turned up dead in their bedrooms during the past few nights.  The skaven campaign of murder continues....;;;;;;;;;;;;;x
+EVTDESCSKAVENGWMURDER2A;Damnation!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWINVASION1;A horde of Skaven have surfaced without warning.  They are assaulting and laying waste to the region!  The Skaven must be behind all the evil befalling our realm. (Your realm is facing a Great Skaven War.  Do not lose your capital, or bad things will happen.);;;;;;;;;;;;;x
+EVTDESCSKAVENGWINVASION1A;They must be exterminated!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWINVASION2;A horde of Skaven have surfaced without warning, again.  They are assaulting and laying waste to the region!  It seems like their numbers are without end....;;;;;;;;;;;;;x
+EVTDESCSKAVENGWINVASION2A;We will destroy them!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWINVASION3;The largest horde of Skaven you have ever seen has risen around your capital, ravaging everything and intent on taking the heart of your Empire.  If your capital falls all is lost.;;;;;;;;;;;;;x
+EVTDESCSKAVENGWINVASION3A;We will prevail!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWSADEND1;The Skaven have crippled our realm.  They have seized our capital and laid waste to surrounding lands.  Our power and esteem has fallen in the eyes of all and now our Empire is lost.;;;;;;;;;;;;;x
+EVTDESCSKAVENGWSADEND1A;We will never forget this!;;;;;;;;;;;;;x
+EVTDESCSKAVENGWGOODEND1;A great victory has been won for your realm and the prize is the greatest of all - survival.  The Skaven numbers have heavily dwindled and the worst of the calamities they have wrought on your realm seem over.;;;;;;;;;;;;;x
+EVTDESCSKAVENGWGOODEND1A;We should make today a holiday!;;;;;;;;;;;;;x
+skaven_great_war_pox_1;Skaven Red-Pox;;;;;;;;;;;;x
+skaven_great_war_pox_1_desc;Plague rats are targeting this province.;;;;;;;;;;;;x
+skaven_great_war_pox_2;Skaven Red-Pox;;;;;;;;;;;;x
+skaven_great_war_pox_2_desc;Plague rats are targeting this province.;;;;;;;;;;;;x
+skaven_great_war_pox_3;Skaven Red-Pox;;;;;;;;;;;;x
+skaven_great_war_pox_3_desc;Plague rats are targeting this province.;;;;;;;;;;;;x
+CB_NAME_DUCHY_SKAVENGW;Surfacer Great War Conquest of [Title.GetBaseName];;;;;;;;;;;;;
+WAR_NAME_DUCHY_SKAVENGW;$ORDER$$FIRST_ADJ$ Great War Surfacing of $OTHER_TITLE$;;;;;;;;;;;;;
